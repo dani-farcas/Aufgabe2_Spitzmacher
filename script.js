@@ -16,15 +16,18 @@ function notenberechnung() {
     // Berechnung der Endnote anhand der Gewichtung
     const endNote = (apt1 * 0.2) + (wiso * 0.1) + (teil1 * 0.1) + (teil2 * 0.1) + (dokumentation * 0.25) + (praesentation * 0.25);
 
-    // Anzeige der Endnote
-    document.getElementById('note').textContent = 'Endnote: ' + endNote.toFixed(2);
 
     // Überprüfen, ob der Prüfling die Prüfung bestanden hat
-    let status = "Unzureichend"; // Anfangsstatus als "Unzureichend" festlegen
-    if (endNote >= 5.0) {
-        status = 'Bestanden'; // Wenn die Endnote >= 5.0 ist, wird der Status auf "Bestanden" gesetzt
+    if (endNote < 1.0 || endNote > 6.0) {
+       alert("Die Endnote muss zwischen 1.00 und 5.00 liegen.");
+       return; 
     }
-
-    // Anzeige des Status
+    let status = "Unzureichend"; // Anfangsstatus als "Unzureichend" festlegen
+    if(endNote <= 5 && endNote >= 1.0) {
+        status = 'Bestanden';
+    }
+    // Anzeige des Endnote
+    document.getElementById('note').textContent = 'Endnote: ' + endNote.toFixed(2);
     document.getElementById('status').textContent = 'Status: ' + status;
 }
+
